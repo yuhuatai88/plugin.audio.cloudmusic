@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  扫码登录窗口
+
+  注意：这里刻意不写 <texture>xxx.png</texture>。
+  脚本窗口里的相对纹理名要靠 skin 的 media 目录解析，很容易找不到；
+  而且 image 控件默认 aspectratio 是 stretch，一旦贴错图就会把二维码
+  拉成非正方形，手机根本扫不出来（v1.1.1 就是这个毛病）。
+  所以三张图（背景 / 白卡 / 二维码）全部在 QRWindow.onInit() 里用
+  绝对路径 setImage()，控件本身只负责位置和尺寸。
+-->
+<window type="dialog">
+  <coordinates>
+    <system>1</system>
+    <posx>0</posx>
+    <posy>0</posy>
+  </coordinates>
+  <controls>
+
+    <!-- 整屏深色底，盖住底下的界面 -->
+    <control type="image" id="1">
+      <description>背景遮罩</description>
+      <posx>0</posx>
+      <posy>0</posy>
+      <width>1280</width>
+      <height>720</height>
+      <aspectratio>stretch</aspectratio>
+    </control>
+
+    <!-- 二维码外面的白色卡片，保证足够大的静默区(quiet zone) -->
+    <control type="image" id="2">
+      <description>白色卡片</description>
+      <posx>320</posx>
+      <posy>40</posy>
+      <width>640</width>
+      <height>640</height>
+      <aspectratio>stretch</aspectratio>
+    </control>
+
+    <!-- 真正的二维码：正方形控件 + 正方形图片 + keep 等比，绝不会变形 -->
+    <control type="image" id="100">
+      <description>二维码</description>
+      <posx>360</posx>
+      <posy>80</posy>
+      <width>560</width>
+      <height>560</height>
+      <aspectratio>keep</aspectratio>
+    </control>
+
+    <control type="label" id="101">
+      <description>提示</description>
+      <posx>0</posx>
+      <posy>2</posy>
+      <width>1280</width>
+      <height>34</height>
+      <align>center</align>
+      <aligny>center</aligny>
+      <textcolor>FFFFFFFF</textcolor>
+      <label>手机打开「网易云音乐」App → 右上角按钮 → 扫一扫</label>
+    </control>
+
+    <control type="label" id="102">
+      <description>状态</description>
+      <posx>60</posx>
+      <posy>684</posy>
+      <width>1160</width>
+      <height>32</height>
+      <align>center</align>
+      <aligny>center</aligny>
+      <textcolor>FFB9C4D0</textcolor>
+      <label>正在生成二维码…</label>
+    </control>
+
+  </controls>
+</window>

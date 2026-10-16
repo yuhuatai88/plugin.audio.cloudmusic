@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.audio.netease"
+       name="网易云音乐"
+       version="1.2.0"
+       provider-name="yuhuatai88">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="main.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="zh_cn">网易云音乐 · 零依赖 Kodi 版</summary>
+    <description lang="zh_cn">网易云音乐 Web API 客户端。支持扫码 / 手机号 / 邮箱登录，登录后可播放会员歌曲、查看我的歌单与每日推荐；也可浏览官方榜单、热门歌单，支持搜索与播放。不依赖任何第三方 Kodi 模块（xbmcswift2 / requests / pycryptodome / qrcode 都不需要，AES 与二维码均为自带实现），Kodi 19/20/21 可直接安装。</description>
+    <disclaimer lang="zh_cn">本插件只是网易云音乐接口的解析客户端，不包含任何音乐内容。音乐版权归网易及相关权利人所有，请支持正版。</disclaimer>
+    <platform>all</platform>
+    <license>GPL-2.0-only</license>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.png</fanart>
+    </assets>
+    <news>v1.2.0
+- 修复二维码被拉伸变形、手机扫不出来的问题（原来窗口背景控件误贴了
+  二维码图并铺满全屏；现在背景/白卡/二维码三张图分开，等比显示）
+- 二维码改为按屏幕像素生成：900px、模块整数倍缩放、四周留足静默区
+- 二维码过期自动换新（最多 2 次），不用退出重进
+- 新增「粘贴 Cookie 登录」：网易风控(-462) 时最稳的登录方式
+- 登录失败改为提示人话原因（原来只显示 code=-462 看不懂）
+- 短信验证码：发码后输错可重试 3 次；发送太频繁/被风控会明确告知
+- 新增「登录诊断」：一键列出各接口真实返回码，可复制给客服/开发者
+- 账号页登录方式重新排序：扫码 / Cookie 优先于密码与短信
+
+v1.1.1
+- 修复 Kodi 21 下每首歌都报 setArtist 错误、刷屏弃用警告的问题
+  （InfoTagMusic.setArtist 只接受字符串，之前传了列表）
+v1.1.0
+- 新增登录：扫码登录（自带二维码生成）/ 手机号+密码 / 短信验证码 / 邮箱
+- 登录态本地保存，重开 Kodi 不用重新登录
+- 登录后首页出现「我的歌单」「每日推荐」，可播放会员歌曲
+- 账号页可刷新登录状态、退出登录
+- 设置里新增登录入口与退出登录按钮
+
+v1.0.0
+- 零第三方依赖重写：自带 AES 实现，不需要 script.module.xbmcswift2 / requests / pycryptodome
+- 官方榜单（63 个）/ 热门歌单 / 搜索
+- 支持 标准 / 极高 / 无损 / Hi-Res 音质切换
+- 可在设置中填入自己的 Cookie 以使用账号内容
+- 支持 Kodi 19 / 20 / 21（含 Xbox UWP 版）</news>
+  </extension>
+</addon>
