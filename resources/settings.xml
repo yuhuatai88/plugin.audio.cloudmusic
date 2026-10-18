@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings version="1">
-  <section id="plugin.audio.netease" label="网易云音乐">
+  <section id="plugin.audio.netease" label="云音乐">
 
-    <category label="账号">
+    <category label="网易云 · 账号">
       <setting label="登录 / 账号管理" type="action"
-               action="RunPlugin(plugin://plugin.audio.netease/?action=account)"
+               action="RunPlugin(plugin://plugin.audio.netease/?src=ne&amp;action=account)"
                option="close"
-               help="扫码登录 / 手机号密码 / 短信验证码 / 邮箱登录，都在这里。登录后可播放会员歌曲，并出现「我的歌单」「每日推荐」。"/>
+               help="扫码 / 手机号密码 / 短信验证码 / 邮箱 / 粘贴 Cookie，都在这里。登录后可播放会员歌曲，并出现「我的歌单」「每日推荐」。"/>
       <setting label="退出登录" type="action"
-               action="RunPlugin(plugin://plugin.audio.netease/?action=logout)"
+               action="RunPlugin(plugin://plugin.audio.netease/?src=ne&amp;action=logout)"
                option="close"/>
       <setting id="cookie" type="text" label="手动 Cookie（备选方案）" default=""
                help="扫码/密码都登不上时才用这个：浏览器登录 music.163.com，F12 → 网络 → 复制任意请求里的整条 Cookie（需含 MUSIC_U），粘到这里。填了它会优先生效，登录后想用登录态请先清空这一项。"/>
@@ -18,7 +18,7 @@
                help="报 -102 之类的证书错误时关掉。"/>
     </category>
 
-    <category label="播放">
+    <category label="网易云 · 播放">
       <setting id="level" type="select" label="默认音质" values="standard|exhigh|lossless|hires"
                option="string" default="standard"
                help="实际可用音质取决于歌曲版权和账号权限，取不到时会自动降一档。"/>
@@ -28,12 +28,42 @@
                help="开了之后，无损拿不到会依次往下试极高 / 标准。"/>
     </category>
 
-    <category label="界面">
+    <category label="网易云 · 界面">
       <setting id="cache_ttl" type="slider" label="榜单缓存分钟数"
                default="30" range="0,1,240" option="int"
                help="0 = 每次都重新拉取。"/>
       <setting id="page_size" type="slider" label="每页歌曲数"
                default="100" range="30,10,300" option="int"/>
+    </category>
+
+    <category label="QQ · 账号">
+      <setting label="登录 / 账号管理" type="action"
+               action="RunPlugin(plugin://plugin.audio.netease/?src=qq&amp;action=account)"
+               option="close"
+               help="扫码（推荐）/ 手机号短信 / 粘贴 Cookie 都在这里。不登录也能听：热歌榜 300 首、排行榜、搜索、歌单（128k/192k）；登录后可尝试 320k / 无损 / VIP 歌曲。"/>
+      <setting label="退出登录" type="action"
+               action="RunPlugin(plugin://plugin.audio.netease/?src=qq&amp;action=logout)"
+               option="close"/>
+      <setting id="qq_cookie" type="text" label="手动 Cookie（需含 uin=，从 y.qq.com 复制）"
+               default=""/>
+    </category>
+
+    <category label="QQ · 播放">
+      <setting id="qq_level" type="select" label="首选音质"
+               values="auto|128|192|ogg|320|flac|ape"
+               option="string" default="auto"/>
+      <setting id="qq_verify_url" type="bool" label="播放前校验地址真实可用"
+               default="true"/>
+      <setting id="qq_page_size" type="slider" label="每页歌曲数"
+               default="100" range="30,10,300" option="int"/>
+      <setting id="qq_cache_ttl" type="slider" label="列表缓存分钟数"
+               default="30" range="0,1,240" option="int"
+               help="0 = 每次都重新拉取。"/>
+    </category>
+
+    <category label="QQ · 高级">
+      <setting id="qq_verify_ssl" type="bool" label="校验 SSL 证书（部分网络环境报错时关掉）"
+               default="true"/>
     </category>
 
   </section>

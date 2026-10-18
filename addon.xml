@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.audio.netease"
-       name="网易云音乐"
-       version="1.2.0"
+<addon id="plugin.audio.cloudmusic"
+       name="云音乐"
+       version="2.0.0"
        provider-name="yuhuatai88">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
@@ -10,16 +10,25 @@
     <provides>audio</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="zh_cn">网易云音乐 · 零依赖 Kodi 版</summary>
-    <description lang="zh_cn">网易云音乐 Web API 客户端。支持扫码 / 手机号 / 邮箱登录，登录后可播放会员歌曲、查看我的歌单与每日推荐；也可浏览官方榜单、热门歌单，支持搜索与播放。不依赖任何第三方 Kodi 模块（xbmcswift2 / requests / pycryptodome / qrcode 都不需要，AES 与二维码均为自带实现），Kodi 19/20/21 可直接安装。</description>
-    <disclaimer lang="zh_cn">本插件只是网易云音乐接口的解析客户端，不包含任何音乐内容。音乐版权归网易及相关权利人所有，请支持正版。</disclaimer>
+    <summary lang="zh_cn">云音乐 · 网易云 + QQ音乐（零依赖 Kodi 版）</summary>
+    <description lang="zh_cn">网易云音乐 + QQ音乐 二合一客户端，打开插件先选音源。网易云：扫码 / 手机号 / 邮箱 / Cookie 登录，登录后可播放会员歌曲、查看我的歌单与每日推荐，支持官方榜单、热门歌单、搜索与音质切换。QQ音乐：排行榜、搜索、歌单、专辑，不登录也能听热歌榜 300 首，扫码 / 短信 / Cookie 登录后可尝试 320k、无损与 VIP 歌曲。不依赖任何第三方 Kodi 模块（xbmcswift2 / requests / pycryptodome / qrcode 都不需要，AES 与二维码均为自带实现），Kodi 19/20/21 与 Xbox 可直接安装。</description>
+    <disclaimer lang="zh_cn">本插件只是各音乐平台接口的解析客户端，不包含任何音乐内容。音乐版权归网易、腾讯及相关权利人所有，请支持正版。</disclaimer>
     <platform>all</platform>
     <license>GPL-2.0-only</license>
     <assets>
       <icon>icon.png</icon>
       <fanart>fanart.png</fanart>
     </assets>
-    <news>v1.2.0
+    <news>v2.0.0
+- 插件合并：QQ音乐并入本插件，首页直接选「网易云音乐 / QQ音乐」
+- QQ音乐：排行榜 / 搜索 / 歌单 / 专辑；不登录可听热歌榜 300 首
+  （128k/192k），扫码 / 短信 / Cookie 登录后可尝试 320k / 无损 / VIP
+- 两个音源的登录态、设置、缓存完全独立；原有网易云登录与设置自动保留
+- 若装过独立的 plugin.audio.qqmusic，QQ音乐登录态会自动迁移过来
+- 插件显示名改为「云音乐」，内部 ID 不变（plugin.audio.netease），
+  老版本可直接覆盖升级
+
+v1.2.0
 - 修复二维码被拉伸变形、手机扫不出来的问题（原来窗口背景控件误贴了
   二维码图并铺满全屏；现在背景/白卡/二维码三张图分开，等比显示）
 - 二维码改为按屏幕像素生成：900px、模块整数倍缩放、四周留足静默区
