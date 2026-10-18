@@ -1,4 +1,4 @@
-# plugin.audio.netease —— 云音乐 Kodi 插件（网易云音乐 + QQ音乐）
+# plugin.audio.cloudmusic —— 云音乐 Kodi 插件（网易云音乐 + QQ音乐）
 
 零第三方依赖的 Kodi 音频插件，一个插件内含两个音源：打开插件先选「网易云音乐 / QQ音乐」，各自的登录态、设置与缓存完全独立。只用 Python 标准库 + Kodi 内置模块 + 自带实现（AES 加密、二维码生成与解码），无需安装 xbmcswift2 / requests / pycryptodome / qrcode 等任何第三方模块。
 
@@ -29,12 +29,12 @@
 3. 选择 zip 包安装
 4. 安装后在「插件 → 音频插件」中找到「云音乐」
 
-> 网易云如遇风控（错误码 -462），请用「扫码登录」或「粘贴 Cookie」；QQ音乐推荐扫码登录。若装过独立的 plugin.audio.qqmusic，其登录态会自动迁移。
+> 网易云如遇风控（错误码 -462），请用「扫码登录」或「粘贴 Cookie」；QQ音乐推荐扫码登录。若装过独立的 plugin.audio.qqmusic，其登录态会自动迁移；装过旧版 plugin.audio.netease 的，网易云登录态也会自动迁移。
 
 ## 目录结构
 
 ```
-plugin.audio.netease/
+plugin.audio.cloudmusic/
 ├── addon.xml                 # 插件清单（id、版本、许可证）
 ├── main.py                   # 统一入口：首页选音源，按 src=ne/qq 分流
 ├── icon.png / fanart.png     # 图标与背景图

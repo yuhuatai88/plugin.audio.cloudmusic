@@ -25,7 +25,8 @@
   （128k/192k），扫码 / 短信 / Cookie 登录后可尝试 320k / 无损 / VIP
 - 两个音源的登录态、设置、缓存完全独立；原有网易云登录与设置自动保留
 - 若装过独立的 plugin.audio.qqmusic，QQ音乐登录态会自动迁移过来
-- 插件显示名改为「云音乐」，内部 ID 不变（plugin.audio.netease），
+- 插件显示名改为「云音乐」，内部 ID 改为 plugin.audio.cloudmusic；
+  旧版（plugin.audio.netease）的网易云登录态与设置会自动迁移，
   老版本可直接覆盖升级
 
 v1.2.0

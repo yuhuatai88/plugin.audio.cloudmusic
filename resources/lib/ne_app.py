@@ -1107,8 +1107,32 @@ def router(paramstring):
         home()
 
 
+def _migrate_old_session():
+    """插件 ID 改为 plugin.audio.cloudmusic 后，把旧数据目录
+    （plugin.audio.netease）里的网易云登录态迁过来（只做一次）"""
+    try:
+        if os.path.exists(SESSION_FILE):
+            return
+        old = os.path.join(translate('special://profile/addon_data/'
+                                     'plugin.audio.netease/'),
+                           'session.json')
+        if not os.path.exists(old):
+            return
+        with open(old, 'rb') as f:
+            data = f.read()
+        if data:
+            _makedirs(PROFILE)
+            _write_bytes(SESSION_FILE, data)
+            xbmc.log('[netease] migrated session from old addon id',
+                     xbmc.LOGINFO)
+    except Exception as e:
+        xbmc.log('[netease] migrate old session failed: %s' % e,
+                 xbmc.LOGWARNING)
+
+
 def init():
     """每次插件调用开始时由 main.py 调一次"""
+    _migrate_old_session()
     _makedirs(PROFILE)
     _makedirs(CACHE_DIR)
     session_load()

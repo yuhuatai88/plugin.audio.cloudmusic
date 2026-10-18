@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings version="1">
-  <section id="plugin.audio.netease" label="云音乐">
+  <section id="plugin.audio.cloudmusic" label="云音乐">
 
     <category label="网易云 · 账号">
       <setting label="登录 / 账号管理" type="action"
-               action="RunPlugin(plugin://plugin.audio.netease/?src=ne&amp;action=account)"
+               action="RunPlugin(plugin://plugin.audio.cloudmusic/?src=ne&amp;action=account)"
                option="close"
                help="扫码 / 手机号密码 / 短信验证码 / 邮箱 / 粘贴 Cookie，都在这里。登录后可播放会员歌曲，并出现「我的歌单」「每日推荐」。"/>
       <setting label="退出登录" type="action"
-               action="RunPlugin(plugin://plugin.audio.netease/?src=ne&amp;action=logout)"
+               action="RunPlugin(plugin://plugin.audio.cloudmusic/?src=ne&amp;action=logout)"
                option="close"/>
       <setting id="cookie" type="text" label="手动 Cookie（备选方案）" default=""
                help="扫码/密码都登不上时才用这个：浏览器登录 music.163.com，F12 → 网络 → 复制任意请求里的整条 Cookie（需含 MUSIC_U），粘到这里。填了它会优先生效，登录后想用登录态请先清空这一项。"/>
@@ -38,11 +38,11 @@
 
     <category label="QQ · 账号">
       <setting label="登录 / 账号管理" type="action"
-               action="RunPlugin(plugin://plugin.audio.netease/?src=qq&amp;action=account)"
+               action="RunPlugin(plugin://plugin.audio.cloudmusic/?src=qq&amp;action=account)"
                option="close"
                help="扫码（推荐）/ 手机号短信 / 粘贴 Cookie 都在这里。不登录也能听：热歌榜 300 首、排行榜、搜索、歌单（128k/192k）；登录后可尝试 320k / 无损 / VIP 歌曲。"/>
       <setting label="退出登录" type="action"
-               action="RunPlugin(plugin://plugin.audio.netease/?src=qq&amp;action=logout)"
+               action="RunPlugin(plugin://plugin.audio.cloudmusic/?src=qq&amp;action=logout)"
                option="close"/>
       <setting id="qq_cookie" type="text" label="手动 Cookie（需含 uin=，从 y.qq.com 复制）"
                default=""/>
